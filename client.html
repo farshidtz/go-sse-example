@@ -1,0 +1,27 @@
+See console logs and Network->EventStream
+
+<script>
+    const evtSource = new EventSource("http://localhost:3000");
+
+    evtSource.onopen = function(event) {
+        console.log("opened", event);
+    }
+
+    evtSource.onerror = function(e) {
+        console.log("error", e);
+    }
+
+    // this handles the default type only: message
+    evtSource.onmessage = function(event) {
+        console.log("message", event);
+    }
+
+    evtSource.addEventListener("even", function(event) {
+        console.log("even", event)
+    });
+
+    evtSource.addEventListener("odd", function(event) {
+        console.log("odd", event)
+    });
+
+</script>
